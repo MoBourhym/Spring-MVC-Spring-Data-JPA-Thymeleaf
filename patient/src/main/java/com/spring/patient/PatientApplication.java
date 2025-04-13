@@ -31,6 +31,17 @@ public class PatientApplication implements CommandLineRunner {
         patient.setMalade(false);
         patient.setScore(20);
 
+        patientRpository.save(patient);
+
+        Patient patient2 = new Patient(null, "Yasmine", new Date(), false, 123);
+
+        patientRpository.save(patient2);
+        Patient patient3 = new Patient(null, "Kora", new Date(), true, 541);
+
+
+        patientRpository.save(patient3);
+        Patient patint4 = Patient.builder().nom("John Dawd").dateNaissance(new Date()).build();
+        patientRpository.save(patint4);
     }
 
 }
