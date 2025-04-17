@@ -23,12 +23,12 @@ public class PatientController {
     private PatientRpository patientRpository;
 
     @GetMapping("/index")
-    public String index(Model model , HttpServletRequest request) {
-        int page=Integer.parseInt(request.getParameter("page"));
-        int size=Integer.parseInt(request.getParameter("size"));
-        Page<Patient>  pagePatients = patientRpository.findAll(PageRequest.of(page,size));
+    public String index(Model model , @RequestParam(name="page",defaultValue = "0") int p , @RequestParam(name="size",defaultValue = "4") int s,@RequestParam(name="keyword",defaultValue = "") String kw) {
+        Page<Patient>  pagePatients = patientRpository.findByNomContains(kw,PageRequest.of(p,s));
+        model.addAttribute("ListPatients",pagePatients.getContent());
         model.addAttribute("listPatients",pagePatients.getContent());
         model.addAttribute("pages",new int[pagePatients.getTotalPages()]);
+        model.addAttribute("keyword",kw);
         return "patients";
     }
 
