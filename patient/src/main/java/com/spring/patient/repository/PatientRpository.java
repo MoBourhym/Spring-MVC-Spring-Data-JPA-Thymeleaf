@@ -9,7 +9,8 @@ import org.springframework.data.repository.query.Param;
 
 public interface PatientRpository extends JpaRepository<Patient, Long> {
 
-Page<Patient> findByNomContains(String keyword, Pageable pageable);
-@Query("select p from Patient p where p.nom like :x")
+    Page<Patient> findByNomContains(String keyword, Pageable pageable);
+
+    @Query("select p from Patient p where p.nom like :x")
     Page<Patient> findByNom(@Param("x") String x, Pageable pageable);
 }

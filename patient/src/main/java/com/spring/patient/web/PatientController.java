@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
-@AllArgsConstructor
 public class PatientController {
 
     @Autowired
@@ -36,7 +35,7 @@ public class PatientController {
         model.addAttribute("pages",new int[pagePatients.getTotalPages()]);
         model.addAttribute("currentPage",page);
         model.addAttribute("keyword",kw);
-        return "template";
+        return "patients";
     }
 
     @GetMapping("/deletePatient")
