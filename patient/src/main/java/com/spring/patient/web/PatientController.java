@@ -41,7 +41,7 @@ public class PatientController {
     @GetMapping("/admin/deletePatient")
     public String deletePatient(@RequestParam(name = "id") Long id, String keyword, int page){
         patientRepository.deleteById(id);
-        return "redirect:/index?page="+page+"&keyword="+keyword;
+        return "redirect:/user/index?page="+page+"&keyword="+keyword;
     }
     @GetMapping("/formPatient")
     public String formPatient(Model model ){
@@ -63,6 +63,6 @@ public class PatientController {
 
     @RequestMapping("/")
     public String home(Model model) {
-        return "redirect:/index";
+        return "redirect:/user/index";
     }
 }
